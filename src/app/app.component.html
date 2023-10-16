@@ -1,0 +1,31 @@
+
+<h1 style="text-align: center; margin-top: 50px;">Weather App</h1>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">  
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Enter City</mat-label>
+          <input matInput [(ngModel)]="city" placeholder="City">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="fetchWeather()" class="btn btn-primary w-100 mb-4">Get Weather</button>
+
+      <div *ngIf="weatherData" class="weather-container card">
+        <div class="card-body">
+          <h2 class="city-name card-title">{{ weatherData.name }}</h2>
+          <p class="temperature card-subtitle mb-2 text-muted">{{ weatherData.main.temp }} °C</p>
+          <p class="description">{{ weatherData.weather[0].description }}</p>
+          <div class="weather-details">
+            <p>Precipitation: {{ weatherData.precipitation || 'N/A' }}%</p>
+            <p>Humidity: {{ weatherData.main.humidity }}%</p>
+            <p>Wind: {{ weatherData.wind.speed }} km/h</p>
+          </div>
+          <p class="date-time text-right">{{ currentDate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
